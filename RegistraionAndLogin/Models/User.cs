@@ -25,7 +25,9 @@ namespace RegistraionAndLogin.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        
+        [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode =true, DataFormatString ="{0:dd/MM/yyyy}")]
         public DateTime? DateOfBirth { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password required")]
