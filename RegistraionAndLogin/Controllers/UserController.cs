@@ -100,6 +100,11 @@ namespace RegistraionAndLogin.Controllers
 
         //login 
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         //login post
 
         //logout
