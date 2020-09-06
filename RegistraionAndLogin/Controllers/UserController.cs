@@ -73,9 +73,30 @@ namespace RegistraionAndLogin.Controllers
             return View(user);
         }
 
-        //verify email 
+        //verify Account
 
-        //verfy email link
+        public ActionResult VrifyAccount(string ActivationCode)
+        {
+            bool Status = false;
+            using (LoginContext context = new LoginContext())
+            {
+                context.Configuration.ValidateOnSaveEnabled = false;  //this line added to avoid confirm pass doesn't match issue on save changes
+
+                var user = context.Users.Where(a => a.ActivationCode == new Guid(ActivationCode)).FirstOrDefault();
+                if (user != null)
+                {
+                    user.IsEmailVerified = true;
+                    context.SaveChanges();
+                    Status = true;
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid Request";
+                }
+                ViewBag.status = Status;
+                return View();
+            }
+        }
 
         //login 
 
