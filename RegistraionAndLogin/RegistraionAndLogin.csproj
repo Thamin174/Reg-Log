@@ -136,8 +136,17 @@
     <Compile Include="Migrations\202009051302343_intialModel.Designer.cs">
       <DependentUpon>202009051302343_intialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009070510127_ResetPasswordAdded.cs" />
+    <Compile Include="Migrations\202009070510127_ResetPasswordAdded.Designer.cs">
+      <DependentUpon>202009070510127_ResetPasswordAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009070530261_ChangeNameResetPassword.cs" />
+    <Compile Include="Migrations\202009070530261_ChangeNameResetPassword.Designer.cs">
+      <DependentUpon>202009070530261_ChangeNameResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginContext.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserLogIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,6 +188,8 @@
     <Content Include="Views\User\VrifyAccount.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\ForgetPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -199,6 +210,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009051302343_intialModel.resx">
       <DependentUpon>202009051302343_intialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009070510127_ResetPasswordAdded.resx">
+      <DependentUpon>202009070510127_ResetPasswordAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009070530261_ChangeNameResetPassword.resx">
+      <DependentUpon>202009070530261_ChangeNameResetPassword.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

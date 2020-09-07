@@ -44,6 +44,8 @@ namespace RegistraionAndLogin.Models
         public bool IsEmailVerified { get; set; }
         [Required]
         public Guid ActivationCode { get; set; }
+        [MaxLength(100)]
+        public string ResetPasswordCode { get; set; }
 
     }
 }
