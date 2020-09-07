@@ -10,7 +10,7 @@ namespace RegistraionAndLogin.Models
     {
         [Required(AllowEmptyStrings =false,ErrorMessage ="Email required")]
         [MaxLength(255)]
-        [DataType(DataType.Password)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings =false, ErrorMessage ="Password is required")]

@@ -181,9 +181,9 @@ namespace RegistraionAndLogin.Controllers
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
             // ****************** change mail and pass to yours before any debug ***************************
-            var fromEmail = new MailAddress("**********@gmail.com", "Thamin");
+            var fromEmail = new MailAddress("search2adie@gmail.com", "Thamin");
             var toEmail = new MailAddress(email);
-            var fromPass = "***********";
+            var fromPass = "Google@1745";
             string subject = "";
             string body = "";
 
