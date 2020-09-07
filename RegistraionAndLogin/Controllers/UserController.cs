@@ -115,7 +115,7 @@ namespace RegistraionAndLogin.Controllers
             using(LoginContext context = new LoginContext())
             {
                 var userDb = context.Users.Where(u => u.Email == userLogin.Email).FirstOrDefault();
-                if(userDb != null)
+                if (userDb != null && userDb.IsEmailVerified == true)
                 {
                     if (string.Compare(Crypto.Hash(userLogin.Password), userDb.Password) == 0) // that means provided pass is valid
                     {
@@ -234,28 +234,34 @@ namespace RegistraionAndLogin.Controllers
             return View();
         }
 
-        //verify the provided Email
+        //check email is valid then send resetPassCode to this email 
         [HttpPost]
         public ActionResult ForgetPassword(string EmailId)
         {
 
-            //send email
             string Message = "";
-            bool Status = false;
             using (LoginContext context = new LoginContext())
             {
                 var account = context.Users.Where(a => a.Email == EmailId).FirstOrDefault();
                 if (account != null)
                 {
                     //generate reset password link
+                    string resetCode = Guid.NewGuid().ToString();
+                    SendVerificationlinkEmail(account.Email, resetCode, "resetPassCode", "ResetPassword");
+                    account.ResetPasswordCode = resetCode;
 
+                    context.Configuration.ValidateOnSaveEnabled = false; //this line for avoiding confirm pass not match issue , becus confirm not in db and validate 
+                                                                         //will throw error
+                    context.SaveChanges();
+                    Message = "Reset Password Link has been sent to your Email : " + EmailId;
                 }
                 else
                 {
-                    Message = "Email is invalid";
+                    Message = "There is no aacount with this email";
                 }
             }
 
+            ViewBag.Message = Message;
             return View();
         }
         public ActionResult ResetPassword(string resetPassCode)
