@@ -19,11 +19,24 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav" style="float:right">
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="btn btn-lg">
+                            @using (Html.BeginForm("LogOut", "User", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Log In", "LogIn", "User")</li>
+                        <li>@Html.ActionLink("Sign Up", "Registration", "User")</li>
+                    }
                 </ul>
+
             </div>
         </div>
     </div>

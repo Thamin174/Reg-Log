@@ -150,6 +150,7 @@ namespace RegistraionAndLogin.Controllers
         //logout
 
         [Authorize]
+        [HttpPost]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
